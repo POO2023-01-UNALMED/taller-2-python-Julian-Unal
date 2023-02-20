@@ -1,32 +1,36 @@
 class Auto:
-    def __init__(self, modelo, precio, asientos, marca, motor, registro, cantidadCreados):
+    cantidadCreados = 0
+    def __init__(self, modelo, precio, asientos, marca, motor, registro):
         self.modelo = modelo
         self.precio = precio
         self.asientos = asientos
         self.marca = marca
         self.motor = motor
         self.registro = registro
-        self.cantidadCreados = cantidadCreados
 
     def verificarIntegridad(self):
-        if (validateRegistros()):
+        if (self.validateRegistros()):
             return "Auto original";
         return "Las piezas no son originales";
     
 
     def validateRegistros(self) :    
         if (self.registro != self.motor.registro) :
-            return false;
+            return False;
         
 
         for asiento in self.asientos:
-            if (asiento != null):
+            if (asiento):
                 return asiento.registro == self.registro;
-            return  true;
+            return  True;
         
         
     def cantidadAsientos(self):
-        return true
+        count = 0
+        for asiento in self.asientos:
+            if (isinstance(asiento, Asiento)):
+                count+=1
+        return count
     
 class Motor :
     def __init__(self, numeroCilindros, tipo, registro):
@@ -35,40 +39,40 @@ class Motor :
         self.registro = registro
 
     def asignarTipo(self, tipo) :
-        if (validateTipo(tipo)) :
+        if (self.validateTipo(tipo)) :
             self.tipo = tipo;
         
         print("Tipo not updated, invalid tipo")
     
 
     def validateTipo(self, tipo) :
-        if (tipo != "electrico" & tipo != "gasolina") :
-            return false
+        if (tipo != "electrico" and tipo != "gasolina") :
+            return False
         
-        return true
+        return True
     
 
-    def cambiarRegistro(registro):
+    def cambiarRegistro(self, registro):
         self.registro = registro;
     
 
 
 class Asiento :
-
-    color;
-    precio;
-    registro;
+    def __init__(self, color, precio, registro):
+        self.color = color
+        self.precio = precio
+        self.registro = registro
 
     def cambiarColor(self, color ) :
-        if (validateColor(color)) :
+        if (self.validateColor(color)) :
             self.color = color;
         
         print("Color not updated, invalid color");
     
 
     def validateColor(self, color) :
-        if (color != "rojo" & color != "verde" & color !=  "amarillo" & color !=  "negro" & color !=  "blanco") :
-            return false;
+        if (color != "rojo" and color != "verde" and color !=  "amarillo" and color !=  "negro" and color !=  "blanco") :
+            return False;
         
-        return true;
+        return True;
     
